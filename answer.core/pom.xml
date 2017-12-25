@@ -6,7 +6,11 @@
 
 	<parent>
 		<groupId>com.david122</groupId>
+<<<<<<< HEAD
 		<artifactId>answer</artifactId>
+=======
+		<artifactId>sealing</artifactId>
+>>>>>>> refs/remotes/origin/master
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
