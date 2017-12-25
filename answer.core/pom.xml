@@ -5,13 +5,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.david122</groupId>
-		<artifactId>answer</artifactId>
+		<groupId>com.ali.seal</groupId>
+		<artifactId>sealing</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>answer.core</artifactId>
-	<name>answer.core</name>
+	<artifactId>sealing.core</artifactId>
+	<name>sealing.core</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -19,8 +19,8 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>com.david122</groupId>
-			<artifactId>answer.model</artifactId>
+			<groupId>com.ali.seal</groupId>
+			<artifactId>sealing.model</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		
