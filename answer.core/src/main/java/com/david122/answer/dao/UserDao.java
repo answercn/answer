@@ -2,7 +2,7 @@ package com.david122.answer.dao;
 
 import org.springframework.stereotype.Component;
 
-import com.ali.seal.sealing.model.User;
+import com.david122.answer.model.User;
 
 /**
  * Created by WangHui on 17/12/01.

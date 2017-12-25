@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ali.seal.sealing.dao.IUserDao;
-import com.ali.seal.sealing.dao.UserDao;
-import com.ali.seal.sealing.model.User;
+import com.david122.answer.dao.IUserDao;
+import com.david122.answer.dao.UserDao;
+import com.david122.answer.model.User;
 
 @Service
 public class UserService {

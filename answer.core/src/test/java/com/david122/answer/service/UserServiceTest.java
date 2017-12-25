@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.ali.seal.sealing.model.User;
+import com.david122.answer.model.User;
 
 //暂时无法跑service的junit，可以从controller的junit测试
 @RunWith(SpringRunner.class)

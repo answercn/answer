@@ -2,7 +2,7 @@ package com.david122.answer.dao;
 
 import java.util.List;
 
-import com.ali.seal.sealing.model.User;
+import com.david122.answer.model.User;
 
 public interface IUserDao {
 	

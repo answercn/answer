@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ali.seal.sealing.model.User;
-import com.ali.seal.sealing.service.UserService;
+import com.david122.answer.model.User;
+import com.david122.answer.service.UserService;
 
 /**
  * Created by WangHui on 17/12/01.
