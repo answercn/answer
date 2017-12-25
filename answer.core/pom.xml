@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.ali.seal</groupId>
+		<groupId>com.david122</groupId>
 		<artifactId>sealing</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
