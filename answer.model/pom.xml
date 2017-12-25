@@ -5,12 +5,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.david122</groupId>
-		<artifactId>sealing</artifactId>
+		<artifactId>answer</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>sealing.model</artifactId>
-	<name>sealing.model</name>
+	<artifactId>answer.model</artifactId>
+	<name>answer.model</name>
 	<url>http://maven.apache.org</url>
 	
 	<properties>
