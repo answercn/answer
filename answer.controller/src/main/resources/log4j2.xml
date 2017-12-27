@@ -3,7 +3,7 @@
 <configuration status="warn">
     <properties>
 
-        <Property name="app_name">springboot-web</Property>
+        <Property name="app_name">answer</Property>
         <Property name="log_path">C:\Workstation\DEV\log4j2\${app_name}</Property>
 
     </properties>
