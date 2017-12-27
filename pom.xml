@@ -7,7 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>answer</name><!-- jjj -->
+	<name>answer</name><!--  -->
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
