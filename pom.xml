@@ -76,11 +76,10 @@
 
 	</dependencies>
 
-
 	<modules>
 		<module>answer.core</module>
 		<module>answer.model</module>
     	<module>answer.controller</module>
-    	<module>answer.mybatis</module>
+    	<!-- <module>answer.mybatis</module> -->
 	</modules>
 </project>
