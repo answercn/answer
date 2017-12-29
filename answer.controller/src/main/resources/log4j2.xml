@@ -1,81 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--设置log4j2的自身log级别为warn -->
-<configuration status="warn">
-    <properties>
+<configuration status="debug" monitorInterval="60">
+	<properties>
 
-        <Property name="app_name">answer</Property>
-        <Property name="log_path">C:\Workstation\DEV\log4j2\${app_name}</Property>
+		<Property name="app_name">answer</Property>
+		<Property name="log_path">C:\Workstation\DEV\log4j2\${app_name}
+		</Property>
 
-    </properties>
-    <appenders>
-        <console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="[%d][%t][%p][%l] %m%n" />
-        </console>
+	</properties>
+	<appenders>
+		<console name="Console" target="SYSTEM_OUT">
+			<!-- <PatternLayout pattern="[%d][%t][%p][%l] %m%n" /> -->
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%t] %-5p %c:%L - %msg%n" />
+		</console>
 
-        <RollingFile name="RollingFileInfo" fileName="${log_path}/info.log"
-                     filePattern="${log_path}/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log.gz">
-            <Filters>
-                <ThresholdFilter level="INFO" />
-                <ThresholdFilter level="WARN" onMatch="DENY"
-                                 onMismatch="NEUTRAL" />
-            </Filters>
-            <PatternLayout pattern="[%d][%t][%p][%c:%L] %m%n" />
-            <Policies>
-                <!-- 归档每天的文件 -->
-                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
-                <!-- 限制单个文件大小 -->
-                <SizeBasedTriggeringPolicy size="2 MB" />
-            </Policies>
-            <!-- 限制每天文件个数 -->
-            <DefaultRolloverStrategy compressionLevel="0" max="10"/>
-        </RollingFile>
+		<RollingRandomAccessFile name="root"
+			filename="${log_path}/${app_name}-root.log" filepattern="${log_path}/${app_name}-root-%d{yyyyMMdd}-%i.log"
+			immediateFlush="false" append="false">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%t] %-5p %c:%L - %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true"></TimeBasedTriggeringPolicy>
+				<SizeBasedTriggeringPolicy size="50 MB"></SizeBasedTriggeringPolicy>
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+		</RollingRandomAccessFile>
 
-        <RollingFile name="RollingFileWarn" fileName="${log_path}/warn.log"
-                     filePattern="${log_path}/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log.gz">
-            <Filters>
-                <ThresholdFilter level="WARN" />
-                <ThresholdFilter level="ERROR" onMatch="DENY"
-                                 onMismatch="NEUTRAL" />
-            </Filters>
-            <PatternLayout pattern="[%d][%t][%p][%c:%L] %m%n" />
-            <Policies>
-                <!-- 归档每天的文件 -->
-                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
-                <!-- 限制单个文件大小 -->
-                <SizeBasedTriggeringPolicy size="2 MB" />
-            </Policies>
-            <!-- 限制每天文件个数 -->
-            <DefaultRolloverStrategy compressionLevel="0" max="10"/>
-        </RollingFile>
+		<RollingRandomAccessFile name="sql"
+			filename="${log_path}/${app_name}-sql.log" filepattern="${log_path}/${app_name}-sql-%d{yyyyMMdd}-%i.log"
+			immediateFlush="false" append="false">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%t] %-5p %c:%L - %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true"></TimeBasedTriggeringPolicy>
+				<SizeBasedTriggeringPolicy size="50 MB"></SizeBasedTriggeringPolicy>
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+		</RollingRandomAccessFile>
 
-        <RollingFile name="RollingFileError" fileName="${log_path}/error.log"
-                     filePattern="${log_path}/$${date:yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log.gz">
-            <ThresholdFilter level="ERROR" />
-            <PatternLayout pattern="[%d][%t][%p][%c:%L] %m%n" />
-            <Policies>
-                <!-- 归档每天的文件 -->
-                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
-                <!-- 限制单个文件大小 -->
-                <SizeBasedTriggeringPolicy size="2 MB" />
-            </Policies>
-            <!-- 限制每天文件个数 -->
-            <DefaultRolloverStrategy compressionLevel="0" max="10"/>
-        </RollingFile>
 
-        <!-- 配置mongdb appender -->
-    </appenders>
 
-    <loggers>
-        <!--过滤掉spring和hibernate的一些无用的debug信息 -->
+		<!-- 配置mongdb appender -->
+	</appenders>
 
-        <root level="info">
-            <appender-ref ref="Console" />
-            <appender-ref ref="RollingFileInfo" />
-            <appender-ref ref="RollingFileWarn" />
-            <appender-ref ref="RollingFileError" />
-            <!-- 输出日志到mongodb -->
-        </root>
+	<loggers>
+		<!--过滤掉spring和hibernate的一些无用的debug信息 -->
+		<Logger name="com.david122.answer" level="info" additivity="false"
+			includeLocation="true">
+			<AppenderRef ref="root" />
+			<AppenderRef ref="Console" />
+		</Logger>
 
-    </loggers>
+		<Logger name="com.david122.answer.dao" level="debug"
+			additivity="false" includeLocation="true">
+			<AppenderRef ref="sql" />
+			<AppenderRef ref="Console" />
+		</Logger>
+
+
+		<!-- <Logger name="org.apache.ibatis" level="debug" additivity="false" 
+			includeLocation="true"> <AppenderRef ref="sql" /> <AppenderRef ref="Console" 
+			/> </Logger> <Logger name="org.mybatis.spring" level="debug" additivity="false" 
+			includeLocation="true"> <AppenderRef ref="sql" /> <AppenderRef ref="Console" 
+			/> </Logger> <Logger name="java.sql.PreparedStatement" level="debug" additivity="false" 
+			includeLocation="true"> <AppenderRef ref="sql" /> <AppenderRef ref="Console" 
+			/> </Logger> <Logger name="org.springframework" level="error" additivity="false" 
+			includeLocation="true"> <AppenderRef ref="root" /> <AppenderRef ref="Console" 
+			/> </Logger> <Logger name="org.apache" level="error" additivity="false" includeLocation="true"> 
+			<AppenderRef ref="root" /> <AppenderRef ref="Console" /> </Logger> -->
+
+		<!-- 打印SQL除了上面的java.sql.PreparedStatement之外，其他的都不需要debug，比如：java.sql.ResultSet会很多 -->
+		<!-- <Logger name="java.sql" level="error" additivity="false" includeLocation="true"> 
+			<AppenderRef ref="sql" /> <AppenderRef ref="Console" /> </Logger> -->
+
+		<!-- 上线时，应该将各个debug改为info以上级别，并去除console的Appender -->
+		<root level="warn" includeLocation="true">
+			<appender-ref ref="root" />
+			<appender-ref ref="Console" />
+
+			<!-- <appender-ref ref="RollingFileInfo" /> <appender-ref ref="RollingFileWarn" 
+				/> <appender-ref ref="RollingFileError" /> -->
+		</root>
+
+	</loggers>
 
 </configuration>

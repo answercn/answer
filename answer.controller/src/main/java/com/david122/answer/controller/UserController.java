@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.david122.answer.annotation.IgnoreSecurity;
 import com.david122.answer.model.User;
 import com.david122.answer.service.UserService;
 
@@ -28,6 +29,7 @@ public class UserController {
     
     // 临时测试接口
     @RequestMapping("/hello/{name}")
+    @IgnoreSecurity
     public String sayHello(@PathVariable(name = "name")String name){
     	
     	
@@ -36,6 +38,7 @@ public class UserController {
     }
     
     @RequestMapping("/getUserList")
+    @IgnoreSecurity
 	public List<User> getUserList() {
 		List<User> users=userService.getUserList();
 		return users;
