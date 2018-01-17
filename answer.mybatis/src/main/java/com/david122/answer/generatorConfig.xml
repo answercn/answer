@@ -3,13 +3,14 @@
 <generatorConfiguration>
   <context id="localMySql">
   	<property name="javaFileEncoding" value="UTF-8"/>
-    <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/sealing" driverClass="com.mysql.jdbc.Driver" password="123456" userId="root" />
+    <jdbcConnection connectionURL="jdbc:mysql://47.95.240.140:3306/answer" driverClass="com.mysql.jdbc.Driver" password="1qazse4rfvgy7" userId="answer" />
     <javaModelGenerator targetPackage="com.david122.answer.model" targetProject="answer.mybatis" >
     <property name="useActualColumnNames" value="true"/>
     </javaModelGenerator>
     <sqlMapGenerator targetPackage="com.david122.answer.dao.map" targetProject="answer.mybatis" />
     <javaClientGenerator targetPackage="com.david122.answer.dao" targetProject="answer.mybatis" type="XMLMAPPER" />
-    <table schema="sealing" tableName="user" mapperName="IUserDao">
+    <table schema="answer" tableName="role" mapperName="IRoleDao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
     </table>
   </context>
 </generatorConfiguration>

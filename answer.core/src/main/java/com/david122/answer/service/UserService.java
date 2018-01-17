@@ -7,34 +7,32 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.david122.answer.dao.IRoleDao;
 import com.david122.answer.dao.IUserDao;
-import com.david122.answer.dao.UserDao;
+import com.david122.answer.model.Role;
 import com.david122.answer.model.User;
 
 @Service
 public class UserService {
 	
 	private static final Logger logger = LogManager.getLogger(UserService.class);
-	
-    @Autowired
-    UserDao userDao;
     
     @Autowired
-	IUserDao iuserDao;
-
-    public User getUser(String name){
-        return userDao.getUser(name);
-
-    }
-
-    public User saveUser(String name,String age){
-        return userDao.saveUser(name,age);
-
-    }
+	IUserDao userDao;
+    
+    @Autowired
+    IRoleDao roleDao;
     
     public List<User> getUserList() {
     	
     	logger.warn("ccccccccccccccccccccccccccc");
-    	return iuserDao.getUserList();
+    	return userDao.getUserList();
+    }
+    
+    
+    public Role selectByPrimaryKey(String key) {
+        
+        logger.warn("bbbbbbb");
+        return roleDao.selectByPrimaryKey(key);
     }
 }
